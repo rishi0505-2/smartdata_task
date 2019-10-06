@@ -1,0 +1,42 @@
+// THEME AND COLOR
+$black : #000000 !default;
+$white : #ffffff !default;
+$theme-default : #303035 !default;
+$theme : #3574F3 !default;
+$theme-alt: #3D3733 !default;
+$theme-light: #E5E5E5 !default;
+$theme-grey: #909095 !default;
+$theme-pink: #e5cbd2 !default;
+$theme-warning: #e8c900 !default;
+$theme-danger: #f64b2f !default;
+
+$theme-facebook: #3b5998 !default;
+$theme-twitter: #00acee !default;
+$theme-instagram: #3f729b !default;
+$theme-youtube: #c4302b !default;
+
+// PATH & FONT NAME
+$font : 'Poppins' !default;
+$font-alt: 'SFUIText' !default;
+$imgpath : "../images/" !default;
+$font-path : "../fonts" !default;
+$iconFontPath : "../fonts/icons" !default;
+$url : $imgpath !default;
+// FONTS and TEXT STYLE
+$fontnormal : 16px !default;
+$fontsmall : 14px !default;
+$lineheight : 1.7 !default;
+$spacing : 5px !default;
+// Display
+$in : inline !default;
+$ib : inline-block !default;
+$b : block !default;
+$t : table !default;
+$cell : table-cell !default;
+$n : none !default;
+//TRANSITION EFFECT
+$trasition_all : all 300ms ease-in-out !default;
+// Margin
+$a : auto !default;
+$auto : auto auto !default;
+$za : 0 auto !default;

@@ -1,0 +1,296 @@
+#header {
+  @include pos(r, 0 0 null);
+  @include box-shadow(2px 1px 15px rgba($black, 0.1));
+  @include transition(all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1));
+  z-index: 100;
+  background-color: $white;
+
+  &.sticky {
+    @include pos(f, 0 0 null);
+    @include translateY(-100%);
+    @include animation(floatheader 1s forwards);
+  }
+
+  ._actions {
+    @include display-flex;
+    @include align-items(center);
+    float: right;
+
+    #searchToggle {
+      @include fontsize(22);
+      @include margin-right(15);
+      color: $black;
+
+      &:hover {
+        color: $theme;
+      }
+    }
+
+    #navToggle {
+      @include square(50px);
+      @include radius(50%);
+      @include padding(11 15);
+      @include pos(r, 0 null null);
+      @include transition(all 0.6s);
+      @include transform-style(preserve-3d);
+      @include box-shadow(0 0 10px rgba($theme, 0.3));
+      background-color: $white;
+
+      @include media('>=1023px') {
+        display: $n;
+      }
+
+      &:hover {
+        // background-color: $theme-default;
+
+        span {
+          // background-color: $white;
+
+          &:first-child {
+            @include transform(translate3d(0px, 5px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(90deg) skew(0deg, 0deg));
+          }
+
+          &:last-child {
+            @include transform(translate3d(0px, -5px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg));
+          }
+        }
+      }
+
+      span {
+        height: 2px;
+        width: 20px;
+        display: $b;
+        background-color: $black;
+        @include margin(8 0);
+        @include transition(inherit);
+        @include transform-style(preserve-3d);
+      }
+    }
+  }
+
+  .headerTopWrap {
+    @include padding(25 15);
+    border-bottom: 1px solid $theme-light;
+
+    @include media('<=991px') {
+      @include padding(10 0);
+    }
+
+    ._search {
+      @include pos(r, null);
+
+      @include media('<=991px') {
+        display: $n;
+      }
+
+      input {
+        border: $n;
+        outline: $n;
+        width: 100%;
+        height: 30px;
+        @include box-shadow-none;
+        @include padding-left(30);
+      }
+
+      i {
+        @include pos(ab, 0 null null 0);
+        @include fontsize(20);
+        line-height: 30px;
+      }
+    }
+
+    ul {
+      @include display-flex;
+      @include justify-content(flex-end);
+      @include align-items(center);
+
+      @include media('<=991px') {
+        @include margin(0 -15 10);
+        @include padding(0 15 10);
+        @include pos(r, null);
+        border-bottom: 1px solid $theme-light;
+        z-index: -1;
+      }
+
+      @include media('<=575px') {
+        @include justify-content(space-between);
+      }
+
+      li {
+        @include margin(0 15);
+
+        @include media('<=575px') {
+          @include margin(0 10);
+        }
+
+        &:first-child {
+          @include margin-left(0);
+        }
+
+        &:last-child {
+          @include margin-right(0);
+        }
+
+        a {
+          @include fontsize(14);
+          font-weight: 500;
+          color: $black;
+
+          @include media('<=991px') {
+            @include fontsize(13);
+          }
+
+          &:hover {
+            color: $theme;
+          }
+
+          &>* {
+            display: $ib;
+            vertical-align: middle;
+          }
+
+          span {
+            @include pos(r, null);
+
+            &:first-child {
+              @include margin-right(5);
+            }
+
+            ._count {
+              @include radius(50%);
+              @include padding(0 3);
+              @include pos(ab, -2px -2px null null);
+              font-weight: 400;
+              font-size: 11px;
+              color: $white;
+              line-height: 16px;
+              background-color: $theme;
+            }
+          }
+
+          i {
+            @include fontsizeEm(20px, 14px);
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+
+  nav {
+    @include pos(r, null);
+    @include display-flex;
+    @include padding(8 30);
+    @include transition(all 0.7s);
+
+    @include media('>=992px') {
+      @include justify-content(center);
+    }
+
+    @include media('<=991px') {
+      @include pos(f, 0 0 0 null);
+      @include flex-direction(column);
+      @include padding(60 0 0);
+      @include translateX(100%);
+      @include opacity(0);
+      visibility: hidden;
+      max-width: 400px;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba($white, 0.95);
+      overflow: auto;
+    }
+
+    ul {
+      @include transition(all 0.5s);
+
+      &>li {
+        display: $ib;
+        @include padding(10 20);
+        @include pos(r, null);
+
+        @include media('<=991px') {
+          display: $b;
+          @include padding(10 30);
+        }
+
+        &>a {
+          @include fontsize(14);
+          color: $black;
+
+          &:hover {
+            @include text-shadow(0 0 $black);
+          }
+
+          .icon-caret-down {
+            @include margin-left(5);
+            @include fontsize(10);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+body {
+  &.menuOpen {
+    overflow: hidden;
+
+    #header {
+      &:before {
+        content: "";
+        @include pos(f, 0);
+        @include experimental-value(min-height, calc(100vh));
+        background-color: rgba($black, 0.7);
+      }
+
+      #navToggle {
+        @include transform(rotateX(0deg) rotateY(0deg) rotateZ(45deg));
+        @include box-shadow(0 0 10px rgba($theme, 0.8));
+        background-color: $theme;
+        z-index: 102;
+        top: -50px;
+
+        &:hover {
+          @include transform(rotateX(0deg) rotateY(0deg) rotateZ(225deg));
+        }
+
+        span {
+          background-color: $white;
+
+          &:first-child {
+            @include transform(translate3d(0px, 5px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(90deg) skew(0deg, 0deg));
+          }
+
+          &:last-child {
+            @include transform(translate3d(0px, -5px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg));
+          }
+        }
+      }
+
+      nav {
+        @include translateX(0);
+        @include opacity(1);
+        visibility: visible;
+        z-index: 101;
+      }
+    }
+
+    main,
+    #footer {
+      @include filter(blur(3px));
+    }
+  }
+}
+
+
+@include keyframes(floatheader) {
+  0% {
+    @include translateY(-100%);
+  }
+
+  100% {
+    @include translateY(0);
+  }
+}

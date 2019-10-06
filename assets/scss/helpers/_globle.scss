@@ -1,0 +1,80 @@
+/*==================================== GLOBLE CSS ====================================*/
+body,
+html {
+   height: 100%;
+   width: 100%;
+   font-family: $font;
+   font-weight: 400;
+   color: $black;
+   -webkit-backface-visibility: hidden;
+   backface-visibility: hidden;
+   -moz-osx-font-smoothing: grayscale;
+   font-size: $fontnormal;
+   line-height: 1.5;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: subpixel-antialiased;
+   -webkit-text-stroke: 0;
+   -webkit-overflow-scrolling: touch;
+}
+
+body {
+   overflow-x: hidden;
+   // @include transition(all 500ms ease-in-out);
+   // background-color: darken($white, 5%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   line-height: 1.5;
+   font-weight: 600;
+}
+
+ol,
+ul {
+   list-style: none;
+   padding-left: 0;
+   margin-bottom: 0;
+}
+
+table {
+   border-collapse: collapse;
+   border-spacing: 0;
+}
+
+a {
+   @include anchor;
+   @include transition($trasition_all);
+   color: $theme;
+   text-decoration: $n;
+   outline: none !important;
+
+   &:hover {
+      color: darken($theme, 30%);
+      text-decoration: $n;
+   }
+
+   &:focus {
+      outline: none !important;
+   }
+}
+
+input[type="file"] {
+   cursor: pointer;
+
+   &::-webkit-file-upload-button {
+      cursor: pointer;
+   }
+}
+
+button,
+input {
+
+   &[type="button"],
+   &[type="submit"] {
+      cursor: pointer;
+   }
+}

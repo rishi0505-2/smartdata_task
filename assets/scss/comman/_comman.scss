@@ -1,0 +1,227 @@
+main {
+  min-height: 100%;
+  @include experimental-value(min-height, calc(100vh - 510px));
+}
+
+.container {
+  max-width: 1170px;
+}
+
+.sectionTitle {
+  &.text-center {
+    h2 {
+      &:after {
+        margin: 7px auto 0;
+      }
+    }
+  }
+
+  h2 {
+    @include fontsize(30);
+    @include margin-bottom(40);
+    font-weight: 600;
+
+    @include media('<=991px') {
+      @include fontsize(26);
+    }
+
+    @include media('<=767px') {
+      @include fontsize(24);
+    }
+
+    &:after {
+      content: "";
+      display: $b;
+      width: 60px;
+      height: 4px;
+      background-color: $theme-light;
+      @include margin-top(7);
+      @include radius(3px 0);
+    }
+  }
+}
+
+.button {
+  height: 40px;
+  line-height: 38px;
+  display: $ib;
+  text-align: center;
+  outline: $n !important;
+  overflow: hidden;
+  border: 1px solid transparent;
+  font-family: $font-alt, $font;
+  font-weight: 400;
+  font-size: 14px;
+  @include pos(r, null);
+  @include transition(all 0.5s);
+  @include padding(0 15);
+
+  &-lg {
+    height: 52px;
+    line-height: 50px;
+  }
+
+  &-sm {
+    height: 30px;
+    line-height: 28px;
+    @include fontsize(12);
+  }
+
+  &-x-md {
+    @include padding-left(30);
+    @include padding-right(30);
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+
+  &-rounded {
+    @include radius(8px);
+  }
+
+  &-block {
+    display: $b;
+    width: 100%;
+  }
+
+  &-theme {
+    background-color: $theme;
+    color: $white;
+
+    &:hover {
+      background-color: darken($theme, 12%);
+      color: $white;
+    }
+  }
+
+  &-light {
+    background-color: $theme-light;
+    color: $black;
+
+    &:hover {
+      background-color: $theme;
+      color: $white;
+    }
+  }
+
+  &-curved {
+    @include radius(16px 0);
+  }
+
+  &-min-160 {
+    min-width: 160px;
+  }
+
+  &-min-140 {
+    min-width: 140px;
+  }
+}
+
+// Floating Input Wrapper
+.floatingInputWrap {
+  @include pos(r, null);
+  @include radius(15px 15px 0 0);
+  background-color: $white;
+
+  .floatingInput {
+    width: 100%;
+    display: $b;
+    border: $n;
+    outline: $n;
+    border-bottom: 3px solid transparent;
+    color: $black;
+    background-color: transparent;
+    @include transition(all 0.5s);
+    @include fontsize(18);
+    @include padding(32 20 10);
+
+    @include input-placeholder {
+      color: $theme-grey;
+    }
+
+    &.error {
+      border-color: $theme-danger;
+
+      &:focus {
+        border-color: $theme-danger;
+      }
+    }
+
+    &:focus {
+      border-color: $theme;
+    }
+
+    &:not(:placeholder-shown)+.floatingLabel,
+    &:focus:not(:placeholder-shown)+.floatingLabel,
+    &:not(:placeholder-shown)~.floatingLabel,
+    &:focus:not(:placeholder-shown)~.floatingLabel {
+      @include translateY(0);
+      @include opacity(1);
+      visibility: visible;
+    }
+  }
+
+  .floatingLabel {
+    @include fontsize(14);
+    @include padding(5 20);
+    @include pos(ab, 8px 0 null);
+    @include margin(0);
+    @include transition(all 0.5s);
+    @include translateY(100%);
+    @include opacity(0);
+    visibility: hidden;
+    line-height: 1;
+    font-weight: 400;
+    display: $b;
+    color: $theme-grey;
+  }
+
+  label {
+    &.error {
+      display: $ib;
+      color: $theme-danger;
+      z-index: 10;
+      line-height: 1;
+      @include fontsize(11);
+      @include pos(ab, 0 0 null null);
+      @include padding(5 10);
+      @include margin(0);
+    }
+  }
+}
+
+.curvedInput {
+  &.form-control {
+    @include radius(16px 0);
+    height: 52px;
+    @include fontsize(18);
+
+    &+label,
+    &~label {
+      &.error {
+        font-size: 12px;
+        color: $theme-danger;
+        @include margin(0);
+      }
+    }
+  }
+}
+
+// Floating Popup Action Button
+.floatingPopupAction {
+  @include pos(f, null 15px 15px null);
+  z-index: 90;
+
+  &>a {
+    @include square(56px);
+    @include radius(50%);
+    @include fontsize(30);
+    @include box-shadow(0 0 15px rgba($black, 0.2));
+    display: $ib;
+    text-align: center;
+    line-height: 56px;
+    background-color: $theme;
+    color: $white;
+  }
+}
